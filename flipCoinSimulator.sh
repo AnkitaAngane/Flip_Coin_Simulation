@@ -9,17 +9,30 @@
 #variable declaration
 h_counter=0
 t_counter=0
+diff=0
 
-for(( counter=1; counter<=21; counter++ ))
+while [ $h_counter -le 21 -a $t_counter -le 21 ]
 do
 	result=$((RANDOM%2))
 	if [ $result -eq 0 ]
 	then
 		h_counter=$(( h_counter + 1 ))
+		if [ $h_counter -eq 21 ]
+		then
+			echo "HEADS count : $h_counter ;  TAILS count : $t_counter"
+			diff=$(( $h_counter - $t_counter ))
+			echo "HEADS Won game by $diff times "
+			break;
+		fi
 	else
 		t_counter=$(( t_counter + 1 ))
+		if [ $t_counter -eq 21 ]
+		then
+			echo "HEADS count : $h_counter ;  TAILS count : $t_counter"
+			diff=$(( $t_counter - $h_counter ))
+			echo "TAILS Won game by $diff times "
+			break;
+		fi
 	fi
 done
 
-echo "HEADS WON $h_counter times"
-echo "TAILS WON $t_counter times"
