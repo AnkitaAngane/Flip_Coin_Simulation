@@ -24,11 +24,12 @@ do
 			echo "HEADS count : $h_counter ;  TAILS count : $t_counter"
 			diff=$(( $h_counter - $t_counter ))
 			echo "HEADS Won game by $diff times "
-			if [ $diff -le 3 ]
+			if [ $diff -le 2 ]
 			then
 				if [ $diff -eq 0 ]
 				then
 					echo "Its a TIE as difference is $diff"
+					final_counter=$(( final_counter + 1 ))
 				else
 					echo "Difference is too less, So please continue"
 					final_counter=$(( final_counter + 1 ))
@@ -44,11 +45,12 @@ do
 			echo "HEADS count : $h_counter ;  TAILS count : $t_counter"
 			diff=$(( $t_counter - $h_counter ))
 			echo "TAILS Won game by $diff times "
-			if [ $diff -le 3 ]
+			if [ $diff -le 2 ]
                         then
                                 if [ $diff -eq 0 ]
                                 then
                                         echo "Its a TIE as difference is $diff"
+					final_counter=$(( final_counter + 1 ))
                                 else
                                         echo "Difference is too less, So please continue"
 					final_counter=$(( final_counter + 1 ))
